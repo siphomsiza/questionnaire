@@ -27,12 +27,7 @@ http://rubydoc.info/github/dr-click/questionnaire/master/frames
 
 Add survey to your Gemfile:
 ```ruby
-gem 'questionnaire_engine', '0.1', :require=>"survey"
-
-```
-or
-```ruby
-gem 'questionnaire_engine', github: 'dr-click/questionnaire', branch: 'master', :require=>"survey"
+gem 'questionnaire_engine', github: 'siphomsiza/questionnaire', branch: 'master', :require=>"survey"
 
 ```
 Then run bundle to install the Gem:
