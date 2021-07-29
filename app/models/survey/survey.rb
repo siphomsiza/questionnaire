@@ -5,6 +5,7 @@ class Survey::Survey < ActiveRecord::Base
   # relations
   has_many :attempts
   has_many :sections
+  accepts_nested_attributes_for :sections,allow_destroy: true,reject_if: :all_blank
 
   #rails 3 attr_accessible support
   if Rails::VERSION::MAJOR < 4

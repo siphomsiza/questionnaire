@@ -3,6 +3,7 @@ class Survey::Question < ActiveRecord::Base
   self.table_name = "survey_questions"
   # relations
   has_many   :options
+  accepts_nested_attributes_for :options,allow_destroy: true,reject_if: :all_blank
   has_many   :predefined_values
   belongs_to :section
 

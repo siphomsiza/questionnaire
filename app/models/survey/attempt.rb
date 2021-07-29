@@ -5,6 +5,7 @@ class Survey::Attempt < ActiveRecord::Base
   # relations
 
   has_many :answers
+  accepts_nested_attributes_for :answers,allow_destroy: true,reject_if: :all_blank
   belongs_to :survey
   belongs_to :participant, :polymorphic => true
 
@@ -12,14 +13,14 @@ class Survey::Attempt < ActiveRecord::Base
   if Rails::VERSION::MAJOR < 4
     attr_accessible :participant_id, :survey_id, :answers_attributes, :survey, :winner, :participant
   end
-  
+
   # validations
   validates :participant_id, :participant_type,
     :presence => true
-    
+
   accepts_nested_attributes_for :answers,
     :reject_if =>
-      ->(q) { q[:question_id].blank? && q[:option_id].blank? }, 
+      ->(q) { q[:question_id].blank? && q[:option_id].blank? },
       allow_destroy: true
 
   #scopes
