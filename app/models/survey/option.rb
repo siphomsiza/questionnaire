@@ -3,7 +3,9 @@ class Survey::Option < ActiveRecord::Base
   self.table_name = "survey_options"
   #relations
   belongs_to :question
-
+  has_many :answers ,class_name: "Survey::Answer", dependent: :destroy
+  accepts_nested_attributes_for :answers, :allow_destroy => true
+  
   #rails 3 attr_accessible support
   if Rails::VERSION::MAJOR < 4
     attr_accessible :text, :correct, :weight, :question_id, :locale_text, :options_type_id, :head_number
